@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <div id="main" class='container'>
+
+        <div id="login" class="authSection">
+            <h3>Log in to your Account</h3>
+            <span class="emptyError">All Fields are required</span>
+            <span class="emptyError">Invalid Credentials</span>
+            <input type="email" placeholder="Enter Email Address" id="loginEmail">
+            <input type="password" placeholder="Enter Password" id="loginPassword">
+            <button class="btn" onclick="handleLogin()">Log In</button>
+            <p>Don't have an Account ? <span onclick="changeAuthScreen('signup', 'login')">Sign Up</span></p>
+        </div>
+
+        <div id="signup" class="authSection">
+            <h3>Create a Free Account</h3>
+            <span class="emptyError">All Fields are required</span>
+            <input type="name" placeholder="Enter Full Name" id="regName">
+            <input type="email" placeholder="Enter Email Address" id="regEmail">
+            <input type="password" placeholder="Enter Password" id="regPassword">
+            <button class="btn" onclick="handleSignup()">Sign Up</button>
+            <p>Already have an account? <span onclick="changeAuthScreen('login', 'signup')">Log In</span></p>
+        </div>
+
+        
+
+        <!-- Code Below is in Development -->
+        
+
+        <!-- <div class='top'>
+            <div class='questionSection'>
+                <div class='questionCount'>
+                    <span>Question 1</span>/5
+                </div>
+                <div class='questionText'>What does HTML stand for?</div>
+            </div>
+            <div class="timer">
+                das
+            </div>
+		</div>
+		<div class='answerSection'>
+			<div class="answer">
+                <span>1.</span>
+                <button class="ansBtn">Hyper Text Merge Language</button>
+            </div>
+			<div class="answer">
+                <span>1.</span>
+                <button class="ansBtn">Hyper Text Merge Language</button>
+            </div>
+			<div class="answer">
+                <span>1.</span>
+                <button class="ansBtn">Hyper Text Merge Language</button>
+            </div>
+		</div> -->
+
+    </div>
+</body>
+</html>
