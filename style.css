@@ -168,6 +168,9 @@ p span{
   display: flex;
   flex-direction: column;
 }
+.subjectSection h1{
+  margin: 10px 1rem;
+}
 .row{
   display: flex;
   justify-content: space-between;
