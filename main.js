@@ -126,6 +126,7 @@ const data = {
 
 let score = 0
 let pointer = 0
+let timeIntervel
 let main = document.getElementById('main')
 
 function fetchQuestion(topic, q){
@@ -133,6 +134,7 @@ function fetchQuestion(topic, q){
 	let answerOptions = ""
 	let optionNo = 1
 	let questions = data[topic]
+
 	for (const answers of questions[q].answerOptions){
 		answerOptions += `
 			<div class="answer">
@@ -142,16 +144,44 @@ function fetchQuestion(topic, q){
 		`
 	}
 	qaSection += `
-		<div class='questionSection'>
-			<div class='questionCount'>
-				<span>Question ${Number(q)+1}</span>/${questions.length}
+		<div class='top'>
+			<div class='questionSection'>
+				<div class='questionCount'>
+					<span>Question ${Number(q)+1}</span>/${questions.length}
+				</div>
+				<div class='questionText'>${questions[q].questionText}</div>
 			</div>
-			<div class='questionText'>${questions[q].questionText}</div>
+			<div id="timer">
+                <div class="circle">
+                    <svg>
+                        <circle cx="50" cy="50" r="50"></circle>
+                        <circle cx="50" cy="50" r="50" id="ss"></circle>
+                    </svg>
+                    <div id="seconds"></div>
+                </div>
+            </div>
 		</div>
 		<div class='answerSection'>
 			${answerOptions}
 		</div>
 	`
+	let s = 30
+	// let s = 5
+	timeIntervel = setInterval(() => {
+		if(s>=0){
+			let seconds = document.getElementById('seconds')
+			let ss = document.getElementById('ss')
+			s = (s < 10) ? "0" + s : s
+			seconds.innerHTML = s + "<br/><span>Seconds</span>"
+			ss.style.strokeDashoffset = 314 - (314 * s) / 30
+			s--
+		}
+		else{
+			clearInterval(timeIntervel)
+			handleSubmit(0, questions.length, topic)
+		}
+	}, 1000)
+
 	main.innerHTML = qaSection
 }
 // fetchQuestion('javascript', pointer)
@@ -159,6 +189,7 @@ function fetchQuestion(topic, q){
 function handleSubmit(answerScore, arrLength, topicName){
 	answerScore && score++
 	pointer++
+	clearInterval(timeIntervel)
 	if(pointer <= arrLength-1){
 		fetchQuestion(topicName, pointer)
 	}
