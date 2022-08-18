@@ -224,11 +224,8 @@ function handleLogin(){
 			authJsonArrayData = localStorage.getItem('authJson')
 			authJsonArray = JSON.parse(authJsonArrayData)
 			for(const user of authJsonArray){
-				// console.log(user.name)
 				if(loginEmail === user.email && loginPassword === user.password){
 					// loggedInUser = user
-					document.getElementById('loginEmail').value = ""
-					document.getElementById('loginPassword').value = ""
 					showTopics()
 					return
 				}
@@ -244,6 +241,8 @@ function handleLogin(){
 	if(flag){
 		showError[1].style.display = "initial"
 	}
+	document.getElementById('loginEmail').value = ""
+	document.getElementById('loginPassword').value = ""
 }
 
 function handleSignup(){
@@ -260,7 +259,6 @@ function handleSignup(){
 		showError[2].style.display = "none"
 		if (localStorage.getItem('authJson') == null){
 			authJsonArray = []
-			// authJsonArray.push([regName, regEmail, regPassword])
 			authJsonArray.push({"name": regName, "email": regEmail, "password": regPassword})
 			localStorage.setItem('authJson', JSON.stringify(authJsonArray))
 		}
