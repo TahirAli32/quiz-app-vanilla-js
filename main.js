@@ -172,6 +172,7 @@ function fetchQuestion(topic, q){
 			let seconds = document.getElementById('seconds')
 			let ss = document.getElementById('ss')
 			s = (s < 10) ? "0" + s : s
+			s < 10 && ss.classList.add('timerCircle')
 			seconds.innerHTML = s + "<br/><span>Seconds</span>"
 			ss.style.strokeDashoffset = 314 - (314 * s) / 30
 			s--
@@ -215,10 +216,12 @@ function handleLogin(){
 
 	if(!loginEmail.match(/([^\s])/) || !loginPassword.match(/([^\s])/)){
 		showError[0].style.display = "initial"
+		showError[1].style.display = "none"
 		return
 	}
 	else{
 		showError[0].style.display = "none"
+		showError[1].style.display = "none"
 		if(localStorage.getItem('authJson')){	
 			showError[1].style.display = "none"
 			authJsonArrayData = localStorage.getItem('authJson')
@@ -239,6 +242,7 @@ function handleLogin(){
 		}	
 	}
 	if(flag){
+		showError[0].style.display = "none"
 		showError[1].style.display = "initial"
 	}
 	document.getElementById('loginEmail').value = ""

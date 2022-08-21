@@ -215,6 +215,9 @@ p span{
   stroke: #04fc43;
   stroke-dasharray: 314;
 }
+.timerCircle{
+  stroke: #fc0c04 !important;
+}
 #timer div{
   position: absolute;
   text-align: center;
